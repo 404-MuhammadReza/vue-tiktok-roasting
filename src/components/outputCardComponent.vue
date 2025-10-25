@@ -22,7 +22,7 @@ output.value = outputStore.value;
   @import url("s://fonts.googleapis.com/css2?family=Fira+Code&display=swap");
 
   .container {
-    width: 400px;
+    width: 330px;
     font-family: "Fira Code", monospace;
     border-radius: 8px;
     overflow: hidden;
