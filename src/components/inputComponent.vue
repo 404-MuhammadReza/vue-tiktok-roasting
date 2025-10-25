@@ -31,6 +31,12 @@ const sendActionToParent = () => {
     width: 250px;
 }
 
+@media screen and (max-width: 768px) {
+  .container .form-section {
+    width: 200px;
+  }
+}
+
 .container .form-section input {
     width: 100%;
     padding: 10px 0;
