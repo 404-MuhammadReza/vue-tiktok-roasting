@@ -34,7 +34,7 @@ const clickButtons = async () => {
 
   const tiktokScrapper = {
     method: 'POST',
-    url: 'https://backend-tiktok-roaster-5vpk3nqe9.vercel.app/api/request',
+    url: 'https://backend-tiktok-roaster-qxj3nc1yz.vercel.app/api/request',
     data: {
       username: inputUsername.value
     }
