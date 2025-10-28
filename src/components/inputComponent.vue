@@ -26,9 +26,14 @@ const sendActionToParent = () => {
 
 <style scoped>
 
+.container {
+    width: 80%;
+    max-width: 300px;
+}
+
 .container .form-section {
     position: relative;
-    width: 250px;
+    width: 100%;
 }
 
 .container .form-section input {
@@ -75,7 +80,6 @@ const sendActionToParent = () => {
 
 .container form a {
     position: relative;
-    display: inline-block;
     padding: 10px 20px;
     color: #ffffff;
     font-size: 16px;
@@ -113,8 +117,8 @@ const sendActionToParent = () => {
     }
 }
 
-.container a span:nth-child(1) {
-    bottom: 2px;
+.container a span {
+    bottom: 0;
     left: -100%;
     width: 100%;
     height: 2px;

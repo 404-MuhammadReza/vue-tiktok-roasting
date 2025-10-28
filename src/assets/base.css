@@ -7,18 +7,20 @@
   --activeColor : #de0522;
 }
 
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html {
+body {
+  font-family: 'poppins';
+  background-color: var(--bgColor);
+}
+
+#app {
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'poppins';
-  background-color: var(--bgColor);
 }

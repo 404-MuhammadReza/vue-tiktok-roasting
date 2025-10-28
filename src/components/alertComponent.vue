@@ -1,8 +1,7 @@
 <style scoped>
 .error {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-        Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    width: 320px;
+    width: 20%;
+    min-width: 300px;
     padding: 12px;
     display: flex;
     flex-direction: row;
@@ -13,16 +12,10 @@
     background: linear-gradient(to right, var(--activeColor), var(--primaryColor));
     box-shadow: 0 0px 10px #de1c3280;
 
-    /* ========== TAMBAHAN UNTUK POSISI KANAN BAWAH ========== */
     position: fixed;
-    /* Membuat posisi tetap relatif terhadap viewport */
     bottom: 20px;
-    /* Jarak dari tepi bawah layar */
     right: 20px;
-    /* Jarak dari tepi kanan layar */
     z-index: 1000;
-    /* Memastikan alert muncul di atas konten lain */
-    /* ======================================================= */
 }
 
 .error__icon {

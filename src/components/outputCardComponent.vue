@@ -18,11 +18,33 @@ input.value = inputStore.value;
 output.value = outputStore.value;
 </script>
 
+<template>
+  <div class="container glass">
+    <div class="terminal_toolbar">
+      <div class="butt">
+        <button class="btn btn-red" @click="sendActionToParent"></button>
+        <button class="btn btn-yellow" @click="sendActionToParent"></button>
+        <button class="btn btn-green" @click="sendActionToParent"></button>
+      </div>
+      <p class="user">{{input}}</p>
+      <div class="add_tab" @click="sendActionToParent">+</div>
+    </div>
+    <div class="terminal_body">
+      <div class="terminal_promt">
+        <span class="terminal_user">roasting@admin:</span>
+        <span class="terminal_location">~</span>
+        <span class="terminal_bling">$ {{output}}<span class="terminal_cursor"></span></span>
+      </div>
+    </div>
+  </div>
+</template>
+
 <style scoped>
   @import url("s://fonts.googleapis.com/css2?family=Fira+Code&display=swap");
 
   .container {
-    width: 330px;
+    width: 70%;
+    max-width: 300px;
     font-family: "Fira Code", monospace;
     border-radius: 8px;
     overflow: hidden;
@@ -48,6 +70,7 @@ output.value = outputStore.value;
   .butt {
     display: flex;
     align-items: center;
+    gap: 5px;
   }
 
   .btn {
@@ -55,7 +78,6 @@ output.value = outputStore.value;
     justify-content: center;
     align-items: center;
     padding: 0;
-    margin-right: 5px;
     font-size: 8px;
     height: 12px;
     width: 12px;
@@ -94,6 +116,7 @@ output.value = outputStore.value;
     border-radius: 4px 4px 0 0;
     border-bottom: none;
     cursor: pointer;
+    margin-left: 23px;
     background-color: rgba(255, 255, 255, 0.05);
     transition: background 0.2s;
   }
@@ -104,7 +127,6 @@ output.value = outputStore.value;
 
   .user {
     color: #d5d0ce;
-    margin-left: 6px;
     font-size: 14px;
     line-height: 15px;
   }
@@ -112,8 +134,7 @@ output.value = outputStore.value;
   .terminal_body {
     background: rgba(0, 0, 0, 0.4);
     height: calc(100% - 30px);
-    padding-top: 8px;
-    margin-top: -1px;
+    padding: 4px;
     font-size: 13px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -127,7 +148,8 @@ output.value = outputStore.value;
   }
 
   .terminal_promt span {
-    margin-left: 4px;
+    margin: 0 4px;
+    
   }
 
   .terminal_user {
@@ -141,31 +163,34 @@ output.value = outputStore.value;
   }
 
   .terminal_bling {
+    text-align: justify;
     color: #ffffff;
     text-shadow: 0 0 3px #ffffff;
   }
 
   .terminal_cursor {
-    display: block;
-    height: 14px;
-    width: 5px;
-    margin-left: 10px;
+    display: inline-block;
+    height: 11px;
+    width: 3px;
     background: #ffffff;
+    box-shadow: 0 0 3px #ffffff;
     animation: curbl 800ms steps(2) infinite;
-    border-radius: 1px;
   }
 
   @keyframes curbl {
     0%,
     49% {
       background: #ffffff;
+      box-shadow: 0 0 3px #ffffff;
     }
     60%,
     99% {
       background: transparent;
+      box-shadow: 0 0 3px transparent;
     }
     100% {
       background: #ffffff;
+      box-shadow: 0 0 3px #ffffff;
     }
   }
   .btn-red {
@@ -180,25 +205,3 @@ output.value = outputStore.value;
     background: radial-gradient(circle at 30% 30%, #27c93f, #199f2c);
   }
 </style>
-
-<template>
-  <div class="container glass">
-    <div class="terminal_toolbar">
-      <div class="butt">
-        <button class="btn btn-red" @click="sendActionToParent"></button>
-        <button class="btn btn-yellow"></button>
-        <button class="btn btn-green"></button>
-      </div>
-      <p class="user">{{input}}</p>
-      <div class="add_tab">+</div>
-    </div>
-    <div class="terminal_body">
-      <div class="terminal_promt">
-        <span class="terminal_user">roasting@admin:</span>
-        <span class="terminal_location">~</span>
-        <span class="terminal_bling">$ {{output}}</span>
-        <span class="terminal_cursor"></span>
-      </div>
-    </div>
-  </div>
-</template>

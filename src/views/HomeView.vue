@@ -4,10 +4,11 @@ import axios from 'axios';
 import inputComponent from '@/components/inputComponent.vue';
 import loadingComponent from '@/components/loadingComponent.vue';
 import outputCardComponent from '@/components/outputCardComponent.vue';
+import sosmedComponent from '@/components/sosmedComponent.vue';
+import AlertComponent from '@/components/alertComponent.vue';
 import { useInputStore } from '@/stores/inputStore';
 import { useOutputStore } from '@/stores/outputStore';
 import { useAlertStore } from '@/stores/alertStore';
-import AlertComponent from '@/components/alertComponent.vue';
 
 const inputStore = useInputStore();
 const outputStore = useOutputStore();
@@ -21,7 +22,6 @@ const alertStatus = ref(false);
 
 const clickButtons = async () => {
   inputUsername.value = inputStore.value;
-  console.info(inputUsername.value)
 
   if (!inputUsername.value) {
     alertStore.value = 'ERROR : Masukkan Username!'
@@ -34,7 +34,7 @@ const clickButtons = async () => {
 
   const tiktokScrapper = {
     method: 'POST',
-    url: 'https://backend-tiktok-roaster-qxj3nc1yz.vercel.app/api/request',
+    url: 'https://backend-tiktok-roaster.vercel.app/api/request',
     data: {
       username: inputUsername.value
     }
@@ -57,17 +57,30 @@ const clickButtons = async () => {
     formStatus.value = true;
     console.error("Error:", error);
   }
+  inputUsername.value = null;
+  inputStore.value = null;
 };
 </script>
 
 <template>
   <inputComponent v-if="formStatus" @clickButton="clickButtons" />
   <loadingComponent v-if="loadingStatus" />
-  <outputCardComponent v-if="outputStatus" @clickBack="outputStatus = false; formStatus=true"/>
+  <div class="ouputContainer" v-if="outputStatus">
+    <outputCardComponent @clickBack="outputStatus = false; formStatus=true"/>
+    <sosmedComponent/>
+  </div>
   
   <Transition name="slide-up"> 
     <AlertComponent v-if="alertStatus" @clickAlert="alertStatus=false"/>
   </Transition>
 </template>
 
-<style scoped></style>
+<style scoped>
+.ouputContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+</style>
